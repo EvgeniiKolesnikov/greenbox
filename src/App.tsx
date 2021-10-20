@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from './index';
 import { ReactChild, ReactFragment, ReactPortal } from 'react';
 import { addCustomerAction, removeCustomerAction } from './store/customerReducer';
+import { fetchCustomers } from './asyncActions/customers';
 
 
 export const App: React.FC = () => {
@@ -57,6 +58,7 @@ export const App: React.FC = () => {
     <div onClick={() => addCash(Number(prompt()))}>addCash</div>
     <div onClick={() => getCash(Number(prompt()))}>getCash</div>
     <div onClick={() => addCustomer(String(prompt()))}>addCustomer</div>
+    <div onClick={() => dispatch(fetchCustomers())}>Get cliens from json</div>
     {/* <div onClick={() => removeCustomers(String(prompt()))}>delCustomer</div> */}
     {customers.length > 0 ? (
       <div>
