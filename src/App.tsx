@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from './index';
-import { ReactChild, ReactFragment, ReactPortal } from 'react';
-import { addCustomerAction, removeCustomerAction } from './store/customerReducer';
+import {
+  addCustomerAction,
+  removeCustomerAction,
+} from './store/customerReducer';
 import { fetchCustomers } from './asyncActions/customers';
-
 
 export const App: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -20,14 +20,17 @@ export const App: React.FC = () => {
   const addCash = (cash: number) => {
     dispatch({ type: 'ADD_CASH', payload: cash });
   };
+
   const getCash = (cash: number) => {
     dispatch({ type: 'GET_CASH', payload: cash });
   };
+
   const addCustomer = (name: string) => {
     const customer = { name, id: Date.now() };
     dispatch(addCustomerAction(customer));
   };
-  const removeCustomer = (customer: { name?: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined; id?: any; }) => {
+
+  const removeCustomer = (customer: { name: string; id: any }) => {
     dispatch(removeCustomerAction(customer.id));
   };
 
@@ -52,36 +55,26 @@ export const App: React.FC = () => {
         onChange={changeHandler}
         onKeyPress={onKeyPress}
       />
-    
-    <div className='cash'>cash: {cash}</div>
 
-    <div onClick={() => addCash(Number(prompt()))}>addCash</div>
-    <div onClick={() => getCash(Number(prompt()))}>getCash</div>
-    <div onClick={() => addCustomer(String(prompt()))}>addCustomer</div>
-    <div onClick={() => dispatch(fetchCustomers())}>Get cliens from json</div>
-    {/* <div onClick={() => removeCustomers(String(prompt()))}>delCustomer</div> */}
-    {customers.length > 0 ? (
-      <div>
-        {customers.map(
-          (customer: {
-            name:
-              | boolean
-              | ReactChild
-              | ReactFragment
-              | ReactPortal
-              | null
-              | undefined;
-            id: number
-          }) => (
+      <div className='cash'>cash: {cash}</div>
+      <div onClick={() => addCash(Number(prompt()))}>add Cash</div>
+      <div onClick={() => getCash(Number(prompt()))}>get Cash</div>
+      <div onClick={() => addCustomer(String(prompt()))}>add Customer</div>
+      <div onClick={() => dispatch<any>(fetchCustomers())}>
+        Get users from json
+      </div>
+
+      {customers.length > 0 ? (
+        <div>
+          {customers.map((customer) => (
             <div onClick={() => removeCustomer(customer)} key={customer.id}>
               {customer.name}
             </div>
-          )
-        )}
-      </div>
-    ) : (
-      <div>No customers</div>
-    )}
-  </div>
+          ))}
+        </div>
+      ) : (
+        <div>No customers</div>
+      )}
+    </div>
   );
 };
