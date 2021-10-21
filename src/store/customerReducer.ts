@@ -1,16 +1,16 @@
-interface UserState {
+interface CustomerState {
   customers: any[];
   loading: boolean;
   error: null | string;
 }
 
-const defaultState: UserState = {
+const defaultState: CustomerState = {
   customers: [],
   loading: false,
   error: null,
 };
 
-export interface UserAction {
+export interface CustomerAction {
   type: string;
   payload: any | any[];
 }
@@ -21,8 +21,8 @@ const REMOVE_CUSTOMERS = 'REMOVE_CUSTOMERS';
 
 export const customerReducer = (
   state = defaultState,
-  action: UserAction,
-): UserState => {
+  action: CustomerAction,
+): CustomerState => {
   switch (action.type) {
     case ADD_MANY_CUSTOMERS:
       return { ...state, customers: [...state.customers, ...action.payload] };

@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
-import { addManyCustomersAction, UserAction } from '../store/customerReducer';
+import { addManyCustomersAction, CustomerAction } from '../store/customerReducer';
 
 export const fetchCustomers = () => {
-  return async (dispatch: Dispatch<UserAction>) => {
+  return async (dispatch: Dispatch<CustomerAction>) => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((json) => dispatch(addManyCustomersAction(json)));
