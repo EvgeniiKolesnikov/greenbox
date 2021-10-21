@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from './index';
+
 import {
   addCustomerAction,
   removeCustomerAction,
 } from './store/customerReducer';
 import { fetchCustomers } from './asyncActions/customers';
+import { UserList } from './components/UserList';
+import { AppDispatch, RootState } from './store';
 
 export const App: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -47,6 +49,7 @@ export const App: React.FC = () => {
   return (
     <div className='App'>
       <div>Greenbox</div>
+      <UserList />
       <input
         type='text'
         id='title'
