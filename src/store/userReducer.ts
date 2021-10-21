@@ -6,7 +6,7 @@ const initialState: UserState = {
   error: null,
 };
 
-export const customerReducer = (
+export const userReducer = (
   state = initialState,
   action: UserAction
 ): UserState => {
