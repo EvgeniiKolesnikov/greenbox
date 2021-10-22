@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useActions } from '../hooks/useActions';
 // import { useSelector } from 'react-redux';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { fetchUsers } from '../store/action-creators/user';
@@ -7,10 +8,11 @@ import { fetchUsers } from '../store/action-creators/user';
 export const UserList: FC = () => {
   // const state = useSelector(state => state)
   const { users, loading, error } = useTypedSelector((state) => state.user);
-  const dispatch = useDispatch();
+  const { fetchUsers } = useActions();
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    fetchUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
