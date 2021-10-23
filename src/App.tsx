@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addCustomerAction,
   removeCustomerAction,
-} from './store/customerReducer';
+} from './store/reducers/customerReducer';
 import { fetchCustomers } from './asyncActions/customers';
 import { UserList } from './components/UserList';
-import { AppDispatch, RootState } from './store';
+import { AppDispatch, RootState } from './store/reducers';
+import { TodoList } from './components/TodoList';
 
 export const App: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -50,6 +51,8 @@ export const App: React.FC = () => {
     <div className='App'>
       <div>Greenbox</div>
       <UserList />
+      <hr />
+      <TodoList />
       <input
         type='text'
         id='title'

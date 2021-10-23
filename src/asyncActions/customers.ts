@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { addManyCustomersAction, CustomerAction } from '../store/customerReducer';
+import { addManyCustomersAction, CustomerAction } from '../store/reducers/customerReducer';
 
 export const fetchCustomers = () => {
   return async (dispatch: Dispatch<CustomerAction>) => {
