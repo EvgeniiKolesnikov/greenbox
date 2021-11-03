@@ -21,7 +21,6 @@ export const fetchUsers = () => {
         type: UserActionTypes.FETCH_USERS_SUCCESS,
         payload: response.data,
       });
-      
     } catch (error) {
       dispatch({
         type: UserActionTypes.FETCH_USERS_ERROR,

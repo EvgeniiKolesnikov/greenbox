@@ -21,7 +21,7 @@ const REMOVE_CUSTOMERS = 'REMOVE_CUSTOMERS';
 
 export const customerReducer = (
   state = defaultState,
-  action: CustomerAction,
+  action: CustomerAction
 ): CustomerState => {
   switch (action.type) {
     case ADD_MANY_CUSTOMERS:

@@ -11,7 +11,7 @@ export enum UserActionTypes {
 }
 
 interface FetchUsersAction {
-  type: UserActionTypes.FETCH_USERS;  // type: typeof FETCH_USERS;
+  type: UserActionTypes.FETCH_USERS; // type: typeof FETCH_USERS;
 }
 
 interface FetchUsersSuccessAction {

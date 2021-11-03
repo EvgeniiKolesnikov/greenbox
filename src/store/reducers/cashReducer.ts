@@ -1,8 +1,8 @@
 // action = {type: '', payload: '?'}
 
 const defaultState = {
-  cash: 5
-}
+  cash: 5,
+};
 
 export const cashReducer = (
   state = defaultState,
